@@ -1,4 +1,17 @@
 Feature: validating ERP tests
+@ApplicationLogin
+Scenario:
+Application Login
+When Open Browser
+When Open Application
+And Wait For Username With "id" and "username"
+And Enter Username with "id" and "username"
+And Enter Password with "id" and "password"
+And Click On Login Button With "id" and "btnsubmit"
+And Wait For Logout Link With "xpath" and "(//a[@href='logout.php'])[2]"
+Then User Validate The Dashboad Page Title
+When Click Logout Link With "xpath" and "(//a[@href='logout.php'])[2]"
+When Close Browser
 @Supplierdata
 Scenario Outline: Supplier creation Functionality Validation
 When Open Browser

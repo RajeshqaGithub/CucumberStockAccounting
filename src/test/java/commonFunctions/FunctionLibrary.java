@@ -30,9 +30,8 @@ static WebDriver driver;
 		driver.manage().window().maximize();
 	}
 	
-	
-	public static void waitForElement(WebDriver driver,String locatortype,
-			String locatorvalue,String waittitme){
+	// method For Wait Any eliment
+	public static void waitForElement(WebDriver driver,String locatortype,String locatorvalue,String waittitme){
 			
 			WebDriverWait mywait=new WebDriverWait(driver, Integer.parseInt(waittitme));
 			if(locatortype.equalsIgnoreCase("id")){
@@ -48,8 +47,7 @@ static WebDriver driver;
 			}			
 	}
 	//method for clickaction
-	public static void clickAction(WebDriver driver,String locatortype,
-			String locatorvalue)
+	public static void clickAction(WebDriver driver,String locatortype,String locatorvalue)
 	{
 		if(locatortype.equalsIgnoreCase("id"))
 		{
@@ -67,9 +65,8 @@ static WebDriver driver;
 		System.out.println("Unable to locate for ClickAction method");	
 		}
 	}
-//	
-	public static void typeAction(WebDriver driver,String locatortype,
-			String locatorvalue,String testdata){
+//	Method For TypeAction
+	public static void typeAction(WebDriver driver,String locatortype,String locatorvalue,String testdata){
 		if(locatortype.equalsIgnoreCase("id"))
 		{
 			driver.findElement(By.id(locatorvalue)).clear();
@@ -149,4 +146,16 @@ static WebDriver driver;
 		}
 		
 }
+	public static void validatetitle(WebDriver driver)
+	{
+		String expectedTitle =  "Dashboard « Stock Accounting";
+		String actualTitle = driver.getTitle();
+		try {
+			Assert.assertEquals(expectedTitle, actualTitle,"Title is Not Matching");
+		}catch(Throwable t)
+		{
+			System.out.println(t.getMessage());
+		}
+		System.out.println(expectedTitle+"::::::::::::::"+actualTitle);
+	}
 }
